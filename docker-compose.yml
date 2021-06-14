@@ -18,11 +18,13 @@ services:
     volumes:
       - ./:/var/www/api/
     networks:
-      - navigator_network
+      - tc_network
     external_links:
       - mariadb:db
     ports:
       - '1112:80'
 
 networks:
-  navigator_network:
+  tc_network:
+    external:
+      name: navigator_network
