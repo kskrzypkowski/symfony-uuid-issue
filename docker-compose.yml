@@ -1,0 +1,28 @@
+version: "3.4"
+
+services:
+
+  bug:
+    container_name: bug
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+      args:
+        TIMEZONE: ${TIMEZONE}
+        APP_ENV: ${APP_ENV}
+    restart: on-failure
+    environment:
+      APACHE_DOCUMENT_ROOT: '/var/www/api/public'
+      TIMEZONE: ${TIMEZONE}
+      APP_ENV: ${APP_ENV}
+    volumes:
+      - ./:/var/www/api/
+    networks:
+      - navigator_network
+    external_links:
+      - mariadb:db
+    ports:
+      - '1112:80'
+
+networks:
+  navigator_network:
