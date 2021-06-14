@@ -1,4 +1,4 @@
-## How to recreate issue
+## How to reproduce issue
 1. Go to `/api`
 2. Click POST: /api/samples
 3. Send JSON without `name` value, eg:
